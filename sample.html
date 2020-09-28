@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sample.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        //$ 제이쿼리표시 선택자
+        $(document).ready(function() { //다큐먼트를 읽어와서 펑션을 실행하세요
+            //document.getElementById("title").innerHTML="Title";
+            //$("#title").innerHTML = "Title";
+            // $("#title").html("Title"); //아이디값이 타이틀인걸 찾아서 이너html에 넣어라
+            $("#title").html("Title")
+                .css('background', 'red')
+                .css('border', '3px dotted blue')
+                .css({
+                    'background': 'red',
+                    'border': '3px dotted blue'
+                }); //스타일 넣고싶다면
+
+
+            console.log($(".subTitle"));
+
+            //$(".subTitle").html("subTitle");
+            $(".subTitle").eq(0).html("subTitle"); //인덱스가 첫번째인걸 바꿔주겠다 eq가 인텍스
+
+            // $('div>h2').css('color', 'aqua');           
+
+            $('h1').css('font-size', '30px');
+            $('h2').css('color', 'aqua');
+
+           //console.clear();
+
+            // console.log($('div').children().eq(2).next().html()); //html내용보여줌 next 붙이면 다음내용보여줌 
+            //console.log($('div').children().first().next().html()); 
+            //console.log($('div').children().first().next().prev().html());
+           // console.log($('div').children().first().next().prev().parent().attr('name')); //네임값가져오기
+        //console.log($('div').children().first().next().prev().parent().attr('name').prev().html());
+            
+
+            // console.log($("div[name]"));
+            // console.log($("div[name]").siblings()); //형제들을 다 데려옴
+            console.log($("div li").css('background','yellow'));
+            console.log($("div>li").siblings()); //하위 거만 가져옴
+
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <h1 id="title">제목</h1>
+    <h2 class="subTitle">부제목1</h2>
+    <h2 class="subTitle">부제목2</h2>
+    <div name = "myDiv">
+        <h2>부제목2-1</h2>
+        <ul>
+            <li>과일1</li>
+            <li>과일2</li>
+            <ol>
+                <li>복숭아</li>
+            </ol>
+        </ul>
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+
+    </div>
+    <h2 class="subTitle">부제목3</h2>
+</body>
+
+</html>

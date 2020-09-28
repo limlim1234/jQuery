@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>selector.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+
+    <script>
+        //   $(document).ready(function () {
+        //두 개 다 똑같음
+        //   });
+        // $(function () { //펑션이 선택자
+        //     console.log("...")
+        //     //메뉴1만 가져오기
+        //    // $("li").eq(3).css('background', 'yellow'); 밑에랑 같음
+        //     //$("div>li").first().css('background', 'yellow');
+        //    // $("div>li").first().nextAll().css('background', 'yellow');
+        //    //$("div>li").first().nextUntil("div>p").css('background', 'yellow'); //p태그 이전까지만 가져오겠다
+        //  //  $("ol>li").css('background', 'yellow');
+        //  $("ol>li").parentsUntil("div[name]").css('background', 'yellow'); //부모요소를 다 가져오겠다 복숭아기준
+        // });
+
+
+
+        $(function () {
+            // $('div li:first').css('background','yellow'); //과일1
+            // $('div li').eq(0).css('background','yellow');
+            //$('div li:first-of-type').css('background','yellow'); // first-머시기 메뉴1 ul과일1 ol복숭아 그룹별로 첫번째요소
+            //그냥 first는 메뉴1만
+            //$('div li:gt(0)').css('background','yellow'); //첫번째요소빼고 다 가져온다
+            //$('div li:lt(3)').css('background','yellow'); //lt는 작은요소 가져오기
+           // $('div li:even').css('background','yellow'); //odd가 홀수 even 짝수
+
+            let someAry=[];
+
+            let lis = $('div>li');
+            console.log(lis);
+            $(lis).each(function(a,b) { //인덱스값, 요소
+                console.log(a,b);
+                someAry.push(b);
+            });
+            console.clear();
+
+            $(someAry).each((a,b)=> { //이 방식을 더 자주 쓰자
+                console.log(a,b);
+            })
+            
+            // someAry.forEach((a,b) => {
+            //     console.log(a,b);
+            // })
+
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <h1 id="title">제목</h1>
+    <h2 class="subTitle">부제목1</h2>
+    <h2 class="subTitle">부제목2</h2>
+    <div name="myDiv">
+        <li>메뉴1</li>
+        <li>메뉴2</li>
+        <li>메뉴3</li>
+        <li>메뉴4</li>
+        <li>메뉴5</li>
+        <ul>
+            <li>과일1</li>
+            <li>과일2</li>
+            <ol>
+                <li>복숭아</li>
+            </ol>
+        </ul>
+       
+        <p>p태그</p>
+        <a href="#">링크</a>
+
+    </div>
+    <h2 class="subTitle">부제목3</h2>
+</body>
+
+</html>

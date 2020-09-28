@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        $(function () {
+        let ids = $('input[type="checkbox"]').map((a, b) => {
+                console.log(a, b);
+                return b.id; //요소중 id만 가져옴 
+            //}).get().join(); //받아와서 조인하겠다 결과: one,two,three 
+        }).get().join('=');//결과 one=two=three
+            console.clear();
+            console.log(ids);
+            $.map($('input[type="checkbox"]'), (a,b) => { //인덱스, 엘리먼트
+
+            })
+
+            //console.log($('input:checkbox'))
+
+           let chkboxes= $.grep($('input:checkbox'),(a,b) => { //grep=필터 여기서는 엘리먼트,인덱스
+                console.log(a.b)//grep=필터
+                return b>0 ? a: null; //b가 인덱스가 0보다 크면 요소가 나옴
+        });
+        console.clear();
+        console.log(chkboxes);
+
+    });
+   
+    </script>
+</head>
+
+<body>
+    <form>
+        <div>
+            <label for='one'>One</label>
+            <input type='checkbox' id='one'>
+        </div>
+        <div>
+            <label for='two'>Two</label>
+            <input type='checkbox' id='two'>
+        </div>
+        <div>
+            <label for='three'>three</label>
+            <input type='checkbox' id='three'>
+        </div>
+    </form>
+</body>
+
+</html>
