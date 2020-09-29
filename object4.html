@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object4.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        let members = ['Hong', 'Hwang', 'Park', 'Choi', 'Kwon'];
+        let links = ['www.daum.net', 'www.naver.com', 'www.google.com'];
+
+        let tables = [{
+                name: "최재영",
+                age: 20
+            },
+            {
+                name: "민해주",
+                age: 30
+            },
+            {
+                name: "허성준",
+                age: 40
+            },
+            {
+                name: "김시무",
+                age: 50
+            }
+
+        ]
+        let ul = $('<ul />');
+
+        $(document).ready(function () {
+
+            let title = ['no', 'name', 'age'];
+
+            let table = $('<table />').attr({
+                'border': '2px',
+                'id': 'tbl'
+            });
+            for (let i = 0; i < tables.length; i++) { //for문을 돌려야함
+                let tr = $('<tr />').attr('id', i); //tr 선언
+
+                let td = $('<td />'); //td 선언i
+                td.html(tables[i].name); //이름 for문
+                tr.append(td); //td를 tr에 붙여야함
+
+                td = $('<td />');
+                td.html(tables[i].age);
+                tr.append(td);
+
+                table.append(tr); //tr을 table에 붙여야함
+            }
+
+            $('body').append(table); //body에 붙여야 내용이 나타남
+
+            $('tr[id]').append($('<td />').append($('<button />').html('클릭')));
+
+            $('button').click(function () {
+                console.log($(this).parent().parent().empty());
+            })
+
+
+
+
+            for (let i = 0; i < members.length; i++) {
+                //ul.append($('<li />').html(members[i]));
+                ul.append($('<li />').attr('id', 'm_' + i).html(members[i]));
+            }
+
+            // let re = $('<ul />').append($('<li />').html('사과'),
+            //     $('<li />').html('오렌지'),
+            //     $('<li />').html('수박')
+            // );
+            //console.log(re);
+
+            $('body').append(ul); //body에 붙이는거
+
+            $('#m_0').css('background', 'yellow');
+
+            $(links).each(function (a, b) { //a가 인덱스 b가 요소
+                console.log(a, b);
+                $('#link').append($('<a />').attr('href', "https://" + b).html(b +
+                    "<br>")); //a 태그를 만든다는 뜻
+            });
+
+
+
+
+
+            $('#add').click(function (event) {
+                console.log(event.preventDefault());
+                let cl = $('#link').clone();
+                console.log(cl);
+            });
+
+            let cl = $('#tbl').clone();
+            console.log(cl);
+            $('#link').before(cl.css('background', 'yellow'));
+
+        });
+    </script>
+</head>
+
+<body>
+    <p id="link"></p>
+    <p id='show'>Hello !!</p>
+</body>
+
+</html>

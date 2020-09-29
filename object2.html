@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object2.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let srcVal = $('img').eq(0).attr('src'); //attr속성을 주거나 지정하는거
+            console.log(srcVal);
+
+            $('img').hover(function() {
+                
+                $('img').attr({
+                'width': '200px',
+                'src': srcVal.replace('daumlogo.jpg', 'googlelogo.jpg'),
+                'alt': 'google'
+                
+            }).css('border','1px dotted red')
+            }, function () {
+                $('img').attr({
+                'width': '200px',
+                'src': srcVal,
+                'alt': 'google'
+                
+            }).css('border','1px dotted blue') //css로 border 줘야함
+            });
+
+           
+        });
+    </script>
+</head>
+
+<body>
+    <h1><strong>객체 조작 및 생성</strong></h1>
+    <section id="sec_1">
+        <h2>이미지 속성</h2>
+        <p><img src="daumlogo.jpg" width="200px" alt="다음"></p>
+    </section>
+</body>
+
+</html>

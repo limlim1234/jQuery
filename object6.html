@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object6.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        let tables = [{
+                name: "최재영",
+                age: 20
+            },
+            {
+                name: "민해주",
+                age: 30
+            },
+            {
+                name: "허성준",
+                age: 40
+            },
+            {
+                name: "김시무",
+                age: 50
+            }
+
+        ]
+
+       
+        $(document).ready(function (){ 
+                    let title = ['no', 'name', 'age'];
+                    let table = $('<table />').attr({'border': '1' ,'id':'tbl'}); //키와 밸류 1개씩있으면 콤마로 속성여러개 : {}속성끼리는 ,
+                    $(tables).each(function (a, b) {
+                            let tr = $('<tr />');
+                                $(title).each(function (i, o) {
+                                    let field = (o == 'no' ? (a + 1) : b[o]);
+                                    tr.append($('<td />').html(field));
+                                }); 
+                                table.append(tr);
+                            }); 
+                            $(table).insertBefore($('#link'));
+
+                            $('tr[id]').append($('td />').append($('<button />').html('클릭')));
+                            
+                            $('button').click(function () {
+                                console.log($(this).parent().parent().empty()); 
+                            })
+                            
+                            
+
+                    });
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

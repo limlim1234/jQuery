@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object5.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        let tables = [{
+                name: "최재영",
+                age: 20
+            },
+            {
+                name: "민해주",
+                age: 30
+            },
+            {
+                name: "허성준",
+                age: 40
+            },
+            {
+                name: "김시무",
+                age: 50
+            }
+
+        ]
+        $(document).ready(function () { //<table />이 <table></table>을 뜻함
+            let table = $('<table />').attr('border', '2px');
+            for (let i = 0; i < tables.length; i++) { //for문을 돌려야함
+                let tr = $('<tr />'); //tr 선언
+
+                let td = $('<td />'); //td 선언
+                td.html(tables[i].name); //이름 for문
+                tr.append(td); //td를 tr에 붙여야함
+
+                td = $('<td />');
+                td.html(tables[i].age);
+                tr.append(td);
+
+                table.append(tr); //tr을 table에 붙여야함
+            }
+
+            $('body').append(table); //body에 붙여야 내용이 나타남
+
+        });
+    </script>
+</head>
+
+<body>
+    <p id="link"></p>
+</body>
+
+</html>

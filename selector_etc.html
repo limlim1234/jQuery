@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>www/Query/selector_etc.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            //$('p :contains("내용1")').css('background', 'yellow'); //p태그중에 내용1만 
+            //$('#outer_wrap :contains("콘텐츠")').css('background', 'yellow'); //젤 상위니까 다 배경이 노랑됨 contains는 속성
+            $('h1:contains("콘텐츠")').css('background',
+                'yellow'); //젤 상위니까 다 배경이 노랑됨 contains는 속성 content는 하위에 있는걸 다 가져옴
+            $('#inner_1').contents().css('background', 'red');
+            $('#inner_1 p').has($('strong')).css('color', 'white');
+
+            //$('#inner_2 p:not(:first)').css('background','yellow');
+            // $('#inner_2 p').not(':eq(1)').css('background', 'yellow');
+            $('#inner_2 p').not($('#c5')).css('background', 'yellow'); //제외하고싶을때 not 씀
+
+            //선택한거 이전으로 end
+            //$('#inner_2 p').css('color', 'aqua'); 
+            $('#inner_2 p').eq(1).css('color', 'aqua')
+            .end().eq(2).css('font-size','30px')
+            .end().eq(0).css('background', 'gray');
+
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <div id="outer_wrap">
+        <h1>콘텐츠 탐색 선택자</h1>
+        <section id="inner_1">
+            <h1>contains(), content(), has()</h1>
+            <p><span>내용1</span></p>
+            <p><strong>내용2</strong></p>
+            <p><span>내용3</span></p>
+        </section>
+        <section id="inner_2">
+        <h1>not(), end()</h1>
+        <p>내용4</p>
+        <p id='c5'>내용5</p>
+        <p>내용6</p>
+    </section>
+    </div>
+</body>
+
+</html>
