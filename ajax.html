@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery/ajax.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'mock.json', //호출가능
+                dataType: 'json',
+                success: function (a, b) { //해당되는 페이지 실행하면 success 못받으면 error
+                    console.log(a, b); //a는 데이터값 b는 success
+                    let data = a;
+                    // $(data).each(); each for라는 반복문
+
+                    let ul = $('<ul />');
+                    for (let i = 0; i < data.length; i++) {
+                        ul.append($('<li />').html(data[i].id + " / " + data[i]
+                        .first_name)); //페이지에 나타남
+                    }
+                    $('#show').append(ul);
+                },
+                error: function (a, b) {
+                    console.log(a, b);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p id="show"></p>
+</body>
+
+</html>

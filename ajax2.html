@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery/ajax.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'mock.json', 
+                dataType: 'json',
+                success: function (a, b) { 
+                    console.log(a, b);
+                    let data = a;
+    
+                    let table = $('<table />').attr('border', '2px');
+                    for (let i = 0; i < data.length; i++) {
+                        let tr = $('<tr />');
+                        let td = $('<td />'); 
+                        td.html(data[i].first_name);
+
+                        tr.append(td);
+
+                        td = $('<td />');
+                        td.html(data[i].last_name);
+                        tr.append(td);
+
+                        td = $('<td />');
+                        td.html(data[i].email);
+                        tr.append(td);
+
+                        table.append(tr);
+                    }
+                    
+                    $('#show').append(table);
+                },
+                error: function (a, b) {
+                    console.log(a, b);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p id="show"></p>
+</body>
+
+</html>

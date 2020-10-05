@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jQuery/ajax.html</title>
+    <script src="jquery-3.5.1.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                url: 'mock.json',
+                dataType: 'json',
+                success: function (a, b) {
+                    console.log(a, b);
+                    let data = a;
+                    let table = $('<table >/').attr('border', '1');
+                    let fields = ['id', 'first_name', 'last_name', 'email']
+                    $(data).each(function (idx, obj) {
+                        let tr = $('<tr />');
+                        table.append(tr);
+                        $(fields).each(function (i, o) { //index, object each는 인덱스랑 오브젝트 둘 다 가져 올 수 있음
+                            tr.append($('<td />').html(obj[o]));
+                        });
+
+                        // for(field of fields) {
+                        //     tr.append($('<td />').html(obj[field]));
+                        // }
+                    });
+                    $('#show').append(table);
+                },
+                error: function (a, b) {
+                    console.log(a, b);
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <p id="show"></p>
+</body>
+
+</html>

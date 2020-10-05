@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for.html</title>
+    <script>
+        let obj = {
+            name: "hong",
+            age: 10,
+            hobby: "reading"
+        }
+
+        let obj1 = {
+            name: "Hwang",
+            age: 10,
+            hobby: "sleeping"
+        }
+
+        let objs=[obj,obj1];
+
+        for(elem of objs) { //데이터를 불러오는거 of
+            for(field in objs[0]) { //데이터를 읽어오는건 in
+                console.log(` ${elem} => 필드명: ${field}, 데이터: ${elem[field]}`); 
+            }
+        }
+
+        console.log(obj.name);
+        console.log(obj['name']); //결과는 같음
+
+        function showValue(obj, arg) { //arg는 필드 안 정해져있음
+            console.log(obj['arg']); //obj.age
+        }
+
+        showValue(obj, 'hobby');
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
