@@ -11,14 +11,14 @@
     <script>
         $(document).ready(function () {
 
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < 15; i++) {
                 data.pop();
             }
-           // console.log(data);
-            
+            // console.log(data);
+
 
             $('#coffeeInput').on('click', function (event) {
-
+                event.preventDefault(); //이벤트 기본값
                 // $.ajax({
                 //     url: 'db에 값을 한 건 입력하는 페이지',
                 //     success:function(a,b) {
@@ -31,26 +31,61 @@
                 // });
                 //console.log($('#frm').serialize());
                 //배열에 입력을 대신
-                
+                let item_no = $('#frm input[name="item_no"]').val(); //값을 넣었다
+                let item = $('#frm input[name="item"]').val();
+                let content = $('#frm input[name="content"]').val();
+                let price = $('#frm input[name="price"]').val();
+                let image = $('#frm input[name="image"]').val();
+                let star = $('#frm input[name="star"]').val();
+                let category = $('#frm input[name="category"]').val();
+                let obj = { //값을 오브젝트에 담고
+                    item_no: item_no,
+                    item: item,
+                    content: content,
+                    price: price,
+                    image: image,
+                    star: star,
+                    category: category
+                };
+
+                data.push(obj);
+
+                //화면에 반영 item_no,item, category, price, star 값들을 다 안다
+                let tr = $('<tr />');
+                tr.append($('<td />').html(item_no),
+                    $('<td />').html(item),
+                    $('<td />').html(category),
+                    $('<td />').html(price),
+                    $('<td />').html(star));
+                //tr라인을 만들어서 테이블에 추가
+                $('#tbl2').append(tr);
+
 
             });
-                //화면에 출력
+
+
+            //화면에 출력
             showData();
 
 
         });
 
         function showData() {
-            let table = $('<table >/').attr('border', '1');
-                    let fields = ['item_no', 'item','category','price','star']
-                    $(data).each(function (idx, obj) {
-                        let tr = $('<tr />');
-                        table.append(tr);
-                        $(fields).each(function (i, o) { 
-                            tr.append($('<td />').html(obj[o]));
-                        });
-                    });
-                    $("#showData").append(table);
+            let table = $('<table >/').attr({
+                'border': '1',
+                'id': 'tbl2'
+
+            });
+            
+            let fields = ['item_no', 'item', 'category', 'price', 'star']
+            $(data).each(function (idx, obj) {
+                let tr = $('<tr />');
+                table.append(tr);
+                $(fields).each(function (i, o) {
+                    tr.append($('<td />').html(obj[o]));
+                });
+            });
+            $("#showData").append(table);
         }
     </script>
 
@@ -59,6 +94,7 @@
 <body>
     <form id='frm'>
         <table id='tbl' border='1'>
+
             <tr>
                 <td>item_no</td>
                 <td><input type="text" name="item_no"></td>
@@ -93,8 +129,9 @@
                 <td colspan="2"><button id="coffeeInput">입력</button><button>취소</button></td>
 
             </tr>
-            </table>
+        </table>
     </form>
+    <div style="height: 20px;"></div>
     <div id="showData"></div>
 </body>
 
